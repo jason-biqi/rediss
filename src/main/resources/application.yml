@@ -1,0 +1,26 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: redis
+
+  datasource:
+      url: jdbc:mysql://47.100.244.130:3306/yunOfficial?useSSL=false
+      username: root
+      password: 8714@*zh#^$
+      driver-class-name: com.mysql.jdbc.Driver
+      pool-prepared-statements: true
+      initial-size: 10
+      max-active: 50
+      min-idle: 10
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filters: stat,wall
+mybatis:
+  type-aliases-package: com.magic.redis.entity
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
