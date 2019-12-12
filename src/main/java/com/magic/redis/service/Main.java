@@ -1,5 +1,6 @@
 package com.magic.redis.service;
 
+import com.magic.redis.entity.Pizz;
 import org.hibernate.validator.constraints.SafeHtml;
 
 import java.lang.reflect.Array;
@@ -11,14 +12,16 @@ public class Main {
 
 
     public static void main(String[] args) {
-        List<Integer> list=new ArrayList<>();
+        CreateContre createContre=new CreateContre();
+        createContre.setCreatPizz(new ChineseCtreat());
 
-        Integer [] integers=new Integer[]{19,2,3,4,5,6};
 
-//        list=Arrays.asList(integers);
-
-        System.out.println(integers[0]);
-
+        Pizz pizz = createContre.out("ChinesePizz");
+        Pizz pizz1 = createContre.out("ChinesePizz");
+        pizz.perpare();
+        pizz.bake();
+        pizz.box();
+        System.err.println(pizz.equals(pizz1));
 
 
 

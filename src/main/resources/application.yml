@@ -24,3 +24,7 @@ spring:
 mybatis:
   type-aliases-package: com.magic.redis.entity
   mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+domain:
+  upload: http://192.168.100.91:2000/upload
+  uploaddir: C:/data/bookfm/doc/ta_zues/upload
+  shareUrl: http://192.168.100.91:2003/pan/
