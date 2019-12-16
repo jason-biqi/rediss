@@ -73,6 +73,18 @@ public class TestController {
         return map;
     }
 
+    @RequestMapping("/myAsync")
+    public String MyAsync(){
+
+
+        aboutCompanyService.myAsync();
+        return "success";
+    }
+
+
+    /**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     */
+
     public static void main(String[] args)throws Exception {
 
 
@@ -197,6 +209,8 @@ public class TestController {
             e.printStackTrace();
         }
     }
+
+
 
 
 

@@ -3,6 +3,7 @@ package com.magic.redis.service;
 import com.magic.redis.dao.AboutCompanyMapper;
 import com.magic.redis.entity.AboutCompany;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +29,18 @@ public class AboutCompanyService {
         list.add(1);
         list.add(2);
         return  aboutCompanyMapper.findTileAndCount(list);
+    }
+
+    @Async
+    public void myAsync(){
+
+        while (true){
+
+            System.err.println(Thread.currentThread().getName());
+
+        }
+
+
     }
 
 }

@@ -1,30 +1,24 @@
 package com.magic.redis.service;
 
-import com.magic.redis.entity.Pizz;
-import org.hibernate.validator.constraints.SafeHtml;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 
 public class Main {
 
 
-    public static void main(String[] args) {
-        CreateContre createContre=new CreateContre();
-        createContre.setCreatPizz(new ChineseCtreat());
+    public static void main(String[] args) throws Exception {
 
-
-        Pizz pizz = createContre.out("ChinesePizz");
-        Pizz pizz1 = createContre.out("ChinesePizz");
-        pizz.perpare();
-        pizz.bake();
-        pizz.box();
-        System.err.println(pizz.equals(pizz1));
-
-
-
+        ThreadPoolExecutor pool=new ThreadPoolExecutor(5,10,200, TimeUnit.MILLISECONDS,  new ArrayBlockingQueue<Runnable>(5));
+        for(int i=0;i<15;i++) {
+            Task task=new Task(i);
+            pool.execute(task);
+            System.out.println("线程池中线程数目："+pool.getPoolSize()+"，队列中等待执行的任务数目："+
+                    pool.getQueue().size()+"，已执行玩别的任务数目："+pool.getCompletedTaskCount());
+        }
+        pool.shutdown();
     }
 
 
