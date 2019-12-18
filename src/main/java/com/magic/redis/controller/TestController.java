@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -89,34 +86,14 @@ public class TestController {
 
 
 
-//        File file=new File("C:\\Users\\54963\\Desktop\\pth\\");
 
+        File file=new File("C:\\Users\\54963\\Desktop\\pth\\aaa.txt");
+        File zipFile=new File("C:\\Users\\54963\\Desktop\\pth\\aa.txt");
 
-
-        String str="D:\\first.zip";
-        String s="C:\\data\\";
-        String si="C:\\data\\a\\cc.png";
-        File file=new File(si);
-        File file1=new File(s);
-
-//        String ss=file.getAbsolutePath().substring(file.getAbsolutePath().length());
-//        System.err.println(ss);
-
-
-        FileOutputStream fos=new FileOutputStream(str);
-        ZipOutputStream zipOut=new ZipOutputStream(fos);
-
-//        ApacheFileUtil2.zipFileStore("data\\a\\cc.png",new File(si),zipOut);
-//        ApacheFileUtil2.zipFileStore("data\\a\\cc - 2.png",new File("C:\\data\\a\\cc - 2.png"),zipOut);
-
-//        DriToZip(new File(s),zipOut,s,"data\\");
-
-         File file2=new File(str);
-         file2.mkdirs();
-//        FileUtils.copyDirectory(new File("C:\\data"),new File("D:\\test\\1"));
-
-        fos.close();
-        zipOut.flush();
+        FileInputStream fis=new FileInputStream(file);
+        FileOutputStream fos=new FileOutputStream(zipFile);
+        BufferedInputStream bis=new BufferedInputStream(fis);
+        PrintStream printStream=new PrintStream(fos);
 
 
     }
