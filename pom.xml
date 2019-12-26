@@ -61,11 +61,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.41</version>
-        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>com.auth0</groupId>-->
 <!--            <artifactId>java-jwt</artifactId>-->
@@ -130,6 +126,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
         </dependency>
 
     </dependencies>
