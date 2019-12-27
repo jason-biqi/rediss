@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,8 @@ import java.util.zip.CRC32;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/test")
 @Api( tags = "redis",description = "redis接口")
@@ -39,6 +42,7 @@ public class TestController {
 
     @Autowired
     AboutCompanyService aboutCompanyService;
+
 
     @ApiOperation(value = "说明方法的用途、作用",notes = "方法的备注说明")
     @ApiImplicitParams(
@@ -54,7 +58,7 @@ public class TestController {
 
       if (true){
           i=i-1;
-          stringRedisTemplate.opsForValue().set("test1",i+"");
+          stringRedisTemplate.opsForValue().set("test1",i+"abcdef");
       }
 
         return aboutCompanyService.findOne();
@@ -62,9 +66,13 @@ public class TestController {
 
 
     @RequestMapping("/map")
-    public List findMap(){
+    public List findMap(HttpServletRequest request){
 
-        System.err.println("success");
+
+        StringBuffer requestURL = request.getRequestURL();
+        String requestURI = request.getRequestURI();
+        System.err.println(requestURL.substring(0,requestURL.length()-requestURI.length()));
+        System.err.println();
        List<Map<String, String>> map = aboutCompanyService.findMap();
 //       System.out.println(map.get("count(1)"));
         return map;
@@ -86,14 +94,8 @@ public class TestController {
 
 
 
-
-        File file=new File("C:\\Users\\54963\\Desktop\\pth\\aaa.txt");
         File zipFile=new File("C:\\Users\\54963\\Desktop\\pth\\aa.txt");
 
-        FileInputStream fis=new FileInputStream(file);
-        FileOutputStream fos=new FileOutputStream(zipFile);
-        BufferedInputStream bis=new BufferedInputStream(fis);
-        PrintStream printStream=new PrintStream(fos);
 
 
     }

@@ -24,7 +24,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact=new Contact("jason","http://ly058.cn","549636956@qq.com");
+        Contact contact=new Contact("jason","","549636956@qq.com");
 
         return new ApiInfoBuilder()
                 .title("Api document")
