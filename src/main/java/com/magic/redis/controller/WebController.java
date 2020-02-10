@@ -1,22 +1,25 @@
 package com.magic.redis.controller;
 
+import com.magic.redis.Aspect.MyMath;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping("/get")
 public class WebController {
 
+    @Autowired
+    MyMath myMath;
 
     @RequestMapping("/index")
     public String getIndex(HttpServletRequest request){
 
-        Map<String, String[]> parameterMap = request.getParameterMap();
-
-        System.err.println(parameterMap.get("loginName"));
+     myMath.div(11,11);
         return "index";
     }
 

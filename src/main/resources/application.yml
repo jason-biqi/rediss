@@ -28,3 +28,6 @@ domain:
   upload: http://192.168.100.91:2000/upload
   uploaddir: C:/data/bookfm/doc/ta_zues/upload
   shareUrl: http://192.168.100.91:2003/pan/
+color:
+  UUID: 9
+  name: white
