@@ -1,6 +1,7 @@
 package com.magic.redis.controller;
 
 
+import com.github.pagehelper.Page;
 import com.magic.redis.entity.AboutCompany;
 import com.magic.redis.entity.Letter;
 import com.magic.redis.service.AboutCompanyService;
@@ -66,6 +67,7 @@ public class TestController {
 
 
     @RequestMapping("/map")
+
     public List findMap(HttpServletRequest request){
 
 
@@ -74,7 +76,7 @@ public class TestController {
         System.err.println(requestURL.substring(0,requestURL.length()-requestURI.length()));
         System.err.println();
        List<Map<String, String>> map = aboutCompanyService.findMap();
-//       System.out.println(map.get("count(1)"));
+
         return map;
     }
 

@@ -1,5 +1,6 @@
 package com.magic.redis.service;
 
+import com.github.pagehelper.Page;
 import com.magic.redis.dao.AboutCompanyMapper;
 import com.magic.redis.entity.AboutCompany;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,15 @@ public class AboutCompanyService {
 
     public AboutCompany findOne(){
 
+        AboutCompany byId = aboutCompanyMapper.findById(9);
 
-        return  aboutCompanyMapper.findById(1);
+        String s=new String("");
+        if(byId.getContent()==s){
+            System.out.println("service++++");
+        }
+        return byId ;
     }
-    public List<Map<String, String>> findMap(){
+    public Page<Map<String, String>> findMap(){
 
         List<Integer> list=new ArrayList<>();
 

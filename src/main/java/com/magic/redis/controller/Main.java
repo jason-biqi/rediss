@@ -1,20 +1,11 @@
 package com.magic.redis.controller;
 
-
-import cn.mp.ms.common.constant.EinkConstants;
-import cn.mp.ms.common.util.BeanUtil;
-import cn.mp.ms.common.util.FileUtil;
-import cn.mp.ms.common.util.PathUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.TypeReference;
-import com.google.common.collect.Sets;
-import com.magic.redis.entity.NotebookBo;
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.net.URI;
 import java.net.URL;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.Environment;
+
 
 public class Main {
 
@@ -22,9 +13,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
 
+
         URL url=Main.class.getClassLoader().getResource("com");
 
-        System.err.println(url);
+        ApplicationContext ac=new AnnotationConfigApplicationContext(JasonConfig.class);
+        Environment environment = ac.getEnvironment();
+        String property = environment.getProperty("os.name");
+
+        Object letter = ac.getBean("letter");
+        System.out.println(property);
+
 
     }
 
