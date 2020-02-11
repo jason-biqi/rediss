@@ -15,9 +15,6 @@ import java.util.Map;
 @RequestMapping("/get")
 public class WebController {
 
-    private static List<String> list=new ArrayList<>();
-
-
     @Autowired
     MyMath myMath;
 
@@ -25,7 +22,6 @@ public class WebController {
     public String getIndex(HttpServletRequest request){
 
      myMath.div(11,11);
-
         return "index";
     }
 

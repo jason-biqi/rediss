@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -29,8 +31,6 @@ import java.util.stream.Collectors;
 import java.util.zip.CRC32;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipOutputStream;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/test")
@@ -43,7 +43,6 @@ public class TestController {
 
     @Autowired
     AboutCompanyService aboutCompanyService;
-
 
     @ApiOperation(value = "说明方法的用途、作用",notes = "方法的备注说明")
     @ApiImplicitParams(
@@ -59,7 +58,7 @@ public class TestController {
 
       if (true){
           i=i-1;
-          stringRedisTemplate.opsForValue().set("test1",i+"abcdef");
+          stringRedisTemplate.opsForValue().set("test1",i+"");
       }
 
         return aboutCompanyService.findOne();
@@ -67,16 +66,11 @@ public class TestController {
 
 
     @RequestMapping("/map")
+    public Page findMap(){
 
-    public List findMap(HttpServletRequest request){
-
-
-        StringBuffer requestURL = request.getRequestURL();
-        String requestURI = request.getRequestURI();
-        System.err.println(requestURL.substring(0,requestURL.length()-requestURI.length()));
-        System.err.println();
-       List<Map<String, String>> map = aboutCompanyService.findMap();
-
+        System.err.println("success");
+       Page<Map<String, String>> map = aboutCompanyService.findMap();
+//       System.out.println(map.get("count(1)"));
         return map;
     }
 
@@ -96,8 +90,34 @@ public class TestController {
 
 
 
-        File zipFile=new File("C:\\Users\\54963\\Desktop\\pth\\aa.txt");
+//        File file=new File("C:\\Users\\54963\\Desktop\\pth\\");
 
+
+
+        String str="D:\\first.zip";
+        String s="C:\\data\\";
+        String si="C:\\data\\a\\cc.png";
+        File file=new File(si);
+        File file1=new File(s);
+
+//        String ss=file.getAbsolutePath().substring(file.getAbsolutePath().length());
+//        System.err.println(ss);
+
+
+        FileOutputStream fos=new FileOutputStream(str);
+        ZipOutputStream zipOut=new ZipOutputStream(fos);
+
+//        ApacheFileUtil2.zipFileStore("data\\a\\cc.png",new File(si),zipOut);
+//        ApacheFileUtil2.zipFileStore("data\\a\\cc - 2.png",new File("C:\\data\\a\\cc - 2.png"),zipOut);
+
+//        DriToZip(new File(s),zipOut,s,"data\\");
+
+         File file2=new File(str);
+         file2.mkdirs();
+//        FileUtils.copyDirectory(new File("C:\\data"),new File("D:\\test\\1"));
+
+        fos.close();
+        zipOut.flush();
 
 
     }
